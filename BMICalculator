@@ -1,0 +1,16 @@
+#PA purpose: calculate BMI
+
+#BMI Calculator
+weight=eval(input("enter weight in pounds:"))
+
+height=eval(input("enter height in inchces:"))
+
+kilo=(weight*0.45359237)
+
+meter=(height*0.0254)
+
+heightsquared=meter**2
+
+BMI=(kilo/heightsquared)
+
+print("BMI is",BMI)
