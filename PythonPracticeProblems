@@ -6,6 +6,8 @@ print("FFFFFFF  U     U  NN N   NN")
 print("FF        U   U   NN  N  NN")
 print("FF         UUU    NN    NNN")
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #PA purpose: to calculate a population
 
 #SecondsConverter
@@ -37,3 +39,24 @@ print(year4)
 print("The population for Year 5 is:")
 year5=(year4)+(SecondsConverter//7)-(SecondsConverter//13)+(SecondsConverter//45)
 print(year5)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#PA purpose: to print a pyramid using the number of lines inputted by the user
+import sys
+
+lines=eval(input("Enter the number of lines (1 to 15):"))
+if lines <1 or lines> 15:
+    print("Number of lines must be between 1 and 15")
+    sys.exit()
+
+#Prompts a nested loop to display pyramid
+for i in range(1, lines+1):
+    for j in range(lines -i,0,-1):
+        print("    ", end="")
+    for j in range(i,0,-1):
+        print(format(j,"4d"),end="")
+    for j in range(2,i+1):
+        print(format(j,"4d"),end="")
+        
+    print()
+
