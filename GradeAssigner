@@ -1,0 +1,26 @@
+#PA purpose:assigns a grade to number entered into the program
+
+#User input data
+x=input("Enter scores: ")
+
+scores=x.split()
+
+#Inputs the scores into a list
+list1=[eval(y) for y in scores]
+
+#Selects the max in the list
+n=max(list1)
+
+#Prompts loop to run for each grade in the list and finds a true statement which assigns a grade to that value
+for grade in range(0,len(list1)):
+    if list1[grade] >= (n-10):
+        print("Student", grade,"score is a", list1[grade],"and grade is an A")
+    elif list1[grade]>=(n-20):
+        print("Student", grade,"score is a", list1[grade],"and grade is an B")
+    elif list1[grade]>=(n-30):
+        print("Student", grade,"score is a", list1[grade],"and grade is an C")
+    elif list1[grade]>=(n-40):
+        print("Student", grade,"score is a", list1[grade],"and grade is an D")
+    else:
+        print("Student", grade,"score is a", list1[grade],"and grade is a F")
+
