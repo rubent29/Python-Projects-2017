@@ -1,0 +1,139 @@
+import sys
+
+#prompts user to input data
+phoneName=input("What is the name of the new phone?")
+
+#checks phone name
+a=phoneName[:1]
+if a.isalnum():
+    if not phoneName.replace(" ","").isalnum():
+        print("Invalid phone name")
+        sys.exit()
+        if len(phoneName)<0:
+            print("Invalid phone name")
+            sys.exit()
+else:
+    print("Invald phone name")
+    sys.exit()
+
+#checks sales price
+salesPrice=input("What is the sale price of the new phone?")
+salesPrice=salesPrice.replace("$","")
+salesPrice=salesPrice.replace(",","")
+
+if not salesPrice.replace(".","").isdigit():
+    print("Sales Price must be numeric")
+    sys.exit()
+    
+salesPrice=eval(salesPrice)
+if salesPrice<100:
+    print("Price must be at least $100.00")
+    sys.exit()
+
+#checks chipset value and setting cost
+chipset=input("What is the chipset - Snapdragon 810 or Kirin 940?")
+if chipset.startswith("S") or chipset.startswith("s"):
+    chipsetCost=salesPrice*.6
+elif chipset.startswith("K") or chipset.startswith("k"):
+    discount=input("Do you want to deal with the discount?")
+    if discount.startswith("Y") or discount.startswith("y"):
+        chipsetCost=salesPrice*.4
+    elif discount.startswith("N") or discount.startswith("n"):
+        chipsetCost=salesPrice*.5
+    else:
+        print("Invalid entry")
+else:
+    print("Invalid chipset. Must be Snapdragon (S) or Kirin (K)")
+    sys.exit()
+
+#Expenses
+
+#Calculates Memory Cost
+if salesPrice>=500:
+    memoryCost=100
+elif 300<=salesPrice<=500:
+    memoryCost=90
+else:
+    memoryCost=80
+
+#Calculates Camera Cost
+camera=salesPrice*.05
+
+#Calculates Battery Cost
+battery=salesPrice/22.7
+
+#Display Cost
+display=ord(a)
+
+#Total Cost
+totalCost=chipsetCost+memoryCost+camera+battery+display
+
+#Net profit
+netProfit=salesPrice-totalCost
+
+#Output
+print("\n The new Phone Name is",phoneName)
+print("\nNew sale price is: $",format(salesPrice,".2f"))
+print("The costs are:")
+print("\tChipset: $",format(chipsetCost,".2f"))
+print("\tMemory: $",format(memoryCost,".2f"))
+print("\tCamera: $",format(camera,".2f"))
+print("\tBattery: $",format(battery,".2f"))
+print("\tDisplay: $",format(display,".2f"))
+print("Total cost: $",format(totalCost,".2f"))
+print("Net Profit: $",format(netProfit,".2f"))
+
+#Currency Conversion
+euroConversion=netProfit*.94
+rupeeConversion=netProfit*67.07
+yenConversion=netProfit*112.82
+
+#Currency Conversion Testing
+if netProfit>0:
+    euros=input("\nWould you like to see profit in Euros (Y/N)?")
+    if euros.startswith("Y") or euros.startswith("y"):
+        euroConversion=.94*netProfit
+    elif euros.startswith("N") or euros.startswith("n"):
+        ()
+    else:
+        print("Invalid Entry!")
+        sys.exit()
+    rupees=input("Would you like to see profit in Rupees (Y/N)?")
+    if rupees.startswith("Y") or rupees.startswith("y"):
+        rupeeConversion=67.07*netProfit
+    elif rupees.startswith("N") or rupees.startswith("n"):
+        ()
+    else:
+        print("Invalid Entry!")
+        sys.exit()
+    yen=input("Would you like to see profit in yen (Y/N)?")
+    if yen.startswith("Y") or yen.startswith("y"):
+       yenConversion=112.82*netProfit
+    elif yen.startswith("N") or yen.startswith("n"):
+        ()
+    else:
+        print("Invalid Entry!")
+else:
+    ()
+
+#Output of Currency Conversion
+if netProfit>0:
+    if euros.startswith("Y") or euros.startswith("y"):
+        print("\nProfit of $",format(netProfit,".2f"),"is \u20AC",format(euroConversion,".4f"))
+    else:
+        print()
+    if rupees.startswith("Y") or rupees.startswith("y"):
+        print("Profit of $",format(netProfit,".2f"),"is \u00A5",format(rupeeConversion,".4f"))
+    else:
+        print()
+    if yen.startswith("Y") or yen.startswith("y"):
+        print("Profit of $",format(netProfit,".2f"),"is \u20B9",format(yenConversion,".4f"))
+    else:
+        print()
+       
+else:
+    print()
+    print("WARNING: You will not make any profit with this phone!")
+        
+
+            
