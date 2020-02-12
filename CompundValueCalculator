@@ -1,0 +1,18 @@
+#PA purpose: compound value calculator
+
+amnt=eval(input("Enter monthly amount to save:"))
+irate=(0.05/12)           
+rate=(1+irate)
+
+amntone=amnt*(rate)
+
+amnttwo=(amnt+amntone)*rate
+
+amntthree=(amnt+amnttwo)*rate
+
+amntfour=(amnt+amntthree)*rate
+
+amntfive=(amnt+amntfour)*rate
+
+totalamnt=(amnt+amntfive)*rate
+print("the valvue in the account after six months is", totalamnt)
