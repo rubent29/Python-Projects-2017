@@ -1,0 +1,24 @@
+#PA purpose: draw a rectangle
+
+import turtle
+
+coordX=eval(input("enter the center x coordinate for the rectangle:"))
+                 
+coordY=eval(input("enter the center y coordinate for the rectangle:"))
+
+width=eval(input("enter the value for the width of the rectangle:"))
+
+height=eval(input("enter the value for the height of the rectangle:"))
+
+turtle.penup()
+turtle.goto(coordX+(width/2), coordY+(height/2))
+turtle.pendown()            
+turtle.right(90)
+turtle.forward(height)
+turtle.right(90)
+turtle.forward(width)            
+turtle.right(90)
+turtle.forward(height)
+turtle.right(90)
+turtle.forward(width)
+turtle.hideturtle()
