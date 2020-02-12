@@ -1,0 +1,28 @@
+#PA purpose: Calculates the payments of each interest rate from 5.000% to 8.000%
+
+#Prompts user enters Loan Amount and number of years 
+import sys
+
+loanAmount=eval(input("Loan Amount:"))
+if loanAmount>100000:
+    print("Loan amount cannot exceed more than $100,000")
+    sys.exit()
+years=eval(input("Number of Years:"))
+if years<3 or years>7:
+    print("Years must be between 3 and 7")
+    sys.exit()
+else:
+    print("\nLoan Amount:",loanAmount,"\nNumber of Years:", years)
+    print("Interest Rate","\t\tMonthly Payment", "\tTotal Payment")
+
+#Calculates the payments for each interest rate starting at an initial rate of 5.000%
+rate=5
+while rate <=8:
+    monthlyInterestRate=rate/1200
+    monthlyPayment=loanAmount*(monthlyInterestRate/(1-1/(1+monthlyInterestRate)**(years*12)))
+    totalPayment=monthlyPayment*years*12
+    print(format(rate,".3f"),"%",sep="", end="\t\t\t   ")
+    print("$",format(monthlyPayment,".2f"),sep="",end="\t\t  ")
+    print("$",format(totalPayment,".2f"),sep="")
+    rate+=.125
+    
